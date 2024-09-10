@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User data</title>
+    <style>
+      .formButton {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 20px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="formButton">
+      <form method="GET" action="/user/add">
+        <button>Add New User</button>
+      </form>
+      <form method="GET" action="/user/search">
+        <button>Search User</button>
+      </form>
+    </div>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>ID</th>
+        <th>username</th>
+        <th>email</th>
+      </tr>
+
+      <% let i = 1 %> <% for(user of users){ %>
+
+      <tr>
+        <th><%= i %></th>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td>
+          <form method="GET" action="/user/<%= user.id %>/edit">
+            <button>Edit</button>
+          </form>
+        </td>
+        <td>
+          <form method="POST" action="/user/<%= user.id %>?_method=DELETE">
+            <button>Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% i++ %> <% } %>
+    </table>
+  </body>
+</html>

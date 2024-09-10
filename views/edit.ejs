@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit User</title>
+    <style>
+      .show {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="show">edit user : <%= user.id %></h1>
+    <br />
+    <br />
+    <form method="post" action="/user/<%= user.id%>?_method=PATCH">
+      <label for="">username: </label>
+      <input
+        type="text"
+        name="username"
+        value="<%=user.username%>"
+      /><br /><br />
+      <label for="">email: </label>
+      <input type="text" name="email" value="<%=user.email%>" /><br /><br />
+
+      <h4>Enter password for checking :</h4>
+
+      <label for="">password: </label>
+      <input type="text" name="password" /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
